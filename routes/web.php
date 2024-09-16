@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\ProvisionServer;
+use App\Http\Controllers\UploadManger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/product/insert', [AuthController::class, 'insertProducts'])->name('products.insert');
 // Route::post('/products/insert', [AuthController::class, 'insertProductsPost'])->name('products.insert.post');
 
-// Route::get('/products/insert',[AuthController::class, 'insertProducts']);
-// Route::post('/products/insert',[AuthController::class, 'insertProductsPost'])->name('products.insert.post');
-
 // routes/web.php
 Route::get('/products', [AuthController::class, 'insertProducts']);
 Route::post('/products', [AuthController::class, 'insertProductsPost'])->name('products.insert.post');
 Route::post('/products/update', [AuthController::class, 'updateProductsPost'])->name('products.update.post');
+
+
+//Uplode/ files
+Route::get('uplode/file', [UploadManger::class, 'uploadFile']);
+Route::post('uplode/file', [UploadManger::class, 'uploadFilePost'])->name('products.update.file');

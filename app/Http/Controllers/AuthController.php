@@ -88,6 +88,8 @@ class AuthController extends Controller
         }
         return "Error in updating product";
     }
+
+    
     
     
 }
