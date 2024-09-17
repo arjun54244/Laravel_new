@@ -19,12 +19,27 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/product/insert', [AuthController::class, 'insertProducts'])->name('products.insert');
 // Route::post('/products/insert', [AuthController::class, 'insertProductsPost'])->name('products.insert.post');
 
-// routes/web.php
-Route::get('/products', [AuthController::class, 'insertProducts']);
-Route::post('/products', [AuthController::class, 'insertProductsPost'])->name('products.insert.post');
-Route::post('/products/update', [AuthController::class, 'updateProductsPost'])->name('products.update.post');
 
+
+// Group middleware
+Route::middleware('auth')->group(function(){
+    // routes/web.php
+    Route::get('/products', [AuthController::class, 'insertProducts']);
+    Route::post('/products', [AuthController::class, 'insertProductsPost'])->name('products.insert.post');
+    Route::post('/products/update', [AuthController::class, 'updateProductsPost'])->name('products.update.post');
+    
+    
+});
+Route::view('/', 'welcome')->with('wellcome',"hello arjun");
 
 //Uplode/ files
 Route::get('uplode/file', [UploadManger::class, 'uploadFile']);
 Route::post('uplode/file', [UploadManger::class, 'uploadFilePost'])->name('products.update.file');
+
+
+
+Route::get('/login',[AuthController::class, 'loginfome'])->name("login");
+Route::post('/login',[AuthController::class, 'loginfomePost'])->name('login.post');
+
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'registerPost'])->name('register.post');

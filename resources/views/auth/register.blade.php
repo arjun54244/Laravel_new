@@ -1,5 +1,5 @@
 @extends("layouts.default")
-@section('title', 'login')
+@section('title', 'Register')
 @section('content')
 <main class="mt-5">
     <div class="container">
@@ -7,9 +7,18 @@
             <div class="col-md-6">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
-                        <h2 class="text-center">Login</h2>
+                        <h2 class="text-center">Register Form</h2>
                         <form action="{{route('register.post')}}" method="post">
                             @csrf
+                            <div class="form-group mb-3">
+                                <label for="fullname">Full Name:</label>
+                                <input type="text" class="form-control @error('fullname') is-invalid @enderror" id="name" name="fullname" required/>
+                                @if ($errors->has('fullname'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('fullname') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                             <div class="form-group mb-3">
                                 <label for="email">Email:</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required autofocus />
@@ -38,5 +47,3 @@
         </div>
     </div>
 </main>
-
-<!-- C:\Users\Lenovo\OneDrive\Desktop\New folder\first\resources\views\layouts\default.blade.php -->

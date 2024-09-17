@@ -1,4 +1,4 @@
-<ul>
+<!-- <ul>
     @foreach ($errors->all() as $error)
         <li>{{$error}}</li>
     @endforeach
@@ -10,4 +10,10 @@
     <input type="number" name="p_price" placeholder="Product Price" /><br>
     <input type="date" name="p_date" placeholder="Product date" /><br>
     <button type="submit">Submit</button>
-</form>
+</form> -->
+
+@if (session('wellcome'))
+    <div class="alert alert-success">
+        {{ session('wellcome') }}
+    </div>
+@endif
